@@ -1,13 +1,7 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 <head>
-	<title>The Entrar-shadow Website form | w3layouts</title>
+	<title>Member Login</title>
 		<meta charset="utf-8">
 		<link href="css/style.css" rel='stylesheet' type='text/css' />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,11 +28,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</form>
 			</div>
 			<!--//End-login-form-->
-			 <!-----start-copyright---->
-   					<div class="copy-right">
-						<p>Template by <a href="http://w3layouts.com">w3layouts</a></p> 
-					</div>
-				<!-----//end-copyright---->
 		</div>
 			 <!-----//end-main---->
 		 		
