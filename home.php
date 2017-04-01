@@ -11,8 +11,6 @@ $stmt = $db_con->prepare("SELECT * FROM tbl_users WHERE user_id=:uid");
 $stmt->execute(array(":uid" => $_SESSION['user_session']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-//Expire the session if user is inactive for 30
-//minutes or more.
 $expireAfter = 1;
 
 //Check to see if our "last action" session
@@ -89,6 +87,7 @@ $_SESSION['last_action'] = time();
             }
         })
     }
+
 </script>
 
 
@@ -108,6 +107,7 @@ $_SESSION['last_action'] = time();
             <ul class="nav navbar-nav">
                 <li><a href="http://localhost/authentification/inc/addCar.html">Add Car</a></li>
                 <li><a href="http://localhost/authentification/inc/deleteCar.html">Remove Car</a></li>
+                <li><a href="http://localhost/authentification/Restful/RestfulClient/1RestClient.html">Restful Testing</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
