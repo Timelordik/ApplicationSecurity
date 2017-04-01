@@ -7,17 +7,16 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script>
         $(document).ready( function () {
-            $('#ogrenciNo').blur(function()
+            $('#user_id').blur(function()
             {
-                //alert("deneme");
                 var form_data =
                     {
-                        id: "'"+$('#ogrenciNo').val()+"'"
+                        id: "'"+$('#user_id').val()+"'"
 
                     };
                 $.ajax({
                     type: 'GET',
-                    url: 'http://192.168.56.101/SecureSoftwareDevelopment/Lecture5WebService/RestfulAPI/api.php/getStudent',
+                    url: 'http://localhost/authentification/Rest/RestfulAPI/api.php/getUser',
                     dataType: 'json',
                     data: form_data,
                     success: function(result)
@@ -34,9 +33,9 @@
 </head>
 <body>
 
-  Öğrenci No: <input type="text" id="ogrenciNo">
+  User Id: <input type="text" id="user_id">
 
-  Adi: <input type="text" id="result">
+  E-Mail: <input type="text" id="result">
 
 </body>
 </html>

@@ -33,20 +33,19 @@
 		) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
  	*/
 	
-require_once("Rest.inc.php");
-require_once("Ogrenci.class.php");
-require_once ("OgrenciGoruntuleJSON.class.php");
+require_once(__DIR__."Rest.inc.php");
+require_once(__DIR__."Ogrenci.class.php");
+require_once (__DIR__."OgrenciGoruntuleJSON.class.php");
 
 	class API extends REST {
 	
 		private $data = array();
 
-		
 		private $db = NULL;
 	
 		public function __construct(){
 			parent::__construct();				// Init parent contructor
-			include('/DatabaseConnection.php');
+			include(__DIR__.'DatabaseConnection.php');
 			$this->db=$veritabaniBaglantisi;// Initiate Database connection
 		}
 		
@@ -70,13 +69,7 @@ require_once ("OgrenciGoruntuleJSON.class.php");
             parse_str($urlParts['query'], $query);
             $this->data=array('param1'=> $query['id']);
 
-
-
-
             parse_str($urlParts['path'], $path);
-
-
-
 
             $func=key($path);
 
@@ -88,26 +81,22 @@ require_once ("OgrenciGoruntuleJSON.class.php");
 			//	$this->response('',404);				// If the method not exist with in this class, response would be "Page not found".
 		}
 
-
-
-		private function getStudents()
+		private function getUsers()
         {
-
-
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
 
-			$sql="SELECT \"ogrenciNo\", \"adi\", \"soyadi\" FROM \"Ogrenci\"";
+			$sql="SELECT \"user_id\", \"user_name\", \"user_email\", \"joining_name\" FROM \"tbl_users\"";
 			$query = $this->db->prepare($sql);
 			if($query->execute()> 0)
 			{
-				$query->setFetchMode(PDO::FETCH_CLASS, "\cc\Ogrenci");
-				$ogrenciler=$query->fetchAll();
-				$jsonGoruntuleyici= new \cc\OgrenciGoruntuleJSON();
+				$query->setFetchMode(PDO::FETCH_CLASS, "__DIR__.Person");
+				$users=$query->fetchAll();
+				$jsonGoruntuleyici= new \OgrenciGoruntuleJSON();
 				$str='[';
-				foreach($ogrenciler as $ogrenci)
-					$str.=$jsonGoruntuleyici->getKisi($ogrenci).',';
+				foreach($users as $user)
+					$str.=$jsonGoruntuleyici->getPerson($user).',';
 				$str=$str.']';
 
 				//echo $str;
@@ -117,7 +106,7 @@ require_once ("OgrenciGoruntuleJSON.class.php");
 		}
 
 
-        private function getStudent(){
+        private function getUser(){
 
 		    //﻿curl --request GET "localhost/SecureSoftwareDevelopment/Lecture5WebService/RestfulAPI/api.php/user?id='1'"
 
@@ -131,15 +120,15 @@ require_once ("OgrenciGoruntuleJSON.class.php");
             $id = $this->data["param1"];
 
 
-            $sql="SELECT \"ogrenciNo\", \"adi\", \"soyadi\" FROM \"Ogrenci\" WHERE \"ogrenciNo\"=$id ";
+            $sql="SELECT \"user_id\", \"user_name\",\"user_email\", \"joining_date\" FROM \"tbl_users\" WHERE \"user_id\"=$id ";
             $query = $this->db->prepare($sql);
             if($query->execute()> 0)
             {
-                $query->setFetchMode(PDO::FETCH_CLASS, "\authentification\Ogrenci");
-                $ogrenciler=$query->fetchAll();
-                $jsonGoruntuleyici= new \authentification\OgrenciGoruntuleJSON();
+                $query->setFetchMode(PDO::FETCH_CLASS, __DIR__."Person");
+                $persons=$query->fetchAll();
+                $jsonGoruntuleyici= new \authentification\Rest\OgrenciGoruntuleJSON();
 
-                    $str=$jsonGoruntuleyici->getKisi($ogrenciler[0]);
+                    $str=$jsonGoruntuleyici->getPerson($persons[0]);
 
                 $this->response($str, 200);
             } else

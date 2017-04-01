@@ -2,8 +2,7 @@
 
 namespace \authentification;
 
-abstract class Kisi
-{
+abstract class Person{
 
     public $user_id;
     public $user_name;
