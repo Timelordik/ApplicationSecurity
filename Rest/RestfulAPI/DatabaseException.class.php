@@ -1,5 +1,5 @@
 <?php
-	class DatabaseBException extends Exception
+	class DatabaseException extends Exception
 	{
 		public function hataGoruntule()
 		{

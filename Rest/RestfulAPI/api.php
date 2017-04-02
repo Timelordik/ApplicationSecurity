@@ -33,9 +33,9 @@
 		) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
  	*/
 	
-require_once(__DIR__."Rest.inc.php");
-require_once(__DIR__."Ogrenci.class.php");
-require_once (__DIR__."OgrenciGoruntuleJSON.class.php");
+require_once(__DIR__.'\Rest.inc.php');
+require_once(__DIR__.'\Ogrenci.class.php');
+require_once (__DIR__.'\OgrenciGoruntuleJSON.class.php');
 
 	class API extends REST {
 	
@@ -45,7 +45,7 @@ require_once (__DIR__."OgrenciGoruntuleJSON.class.php");
 	
 		public function __construct(){
 			parent::__construct();				// Init parent contructor
-			include(__DIR__.'DatabaseConnection.php');
+			include(__DIR__.'\DatabaseConnection.php');
 			$this->db=$veritabaniBaglantisi;// Initiate Database connection
 		}
 		
