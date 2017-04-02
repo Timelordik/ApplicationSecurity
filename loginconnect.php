@@ -15,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //$username = mysql_real_escape_string($username);
 //$password = mysql_real_escape_string($password);
     $encpass = md5($password);
-    echo $encpass;
     // TO server side check wheter the the login inputs are empty or not
 
     //If empty .....
@@ -48,9 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo "ok"; // log in
         } else {
-            echo "User or password does not exist."; // wrong details
+            echo "Check your category, user or password!"; // wrong details
         }
-
 
     }
 }
