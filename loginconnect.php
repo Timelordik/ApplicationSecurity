@@ -2,7 +2,7 @@
 //session_start();
 
 require_once('dbconfig.php');  //include 'dbconnect.php'
-
+$conn = mysqli_connect("localhost", "root", "", "database", "3306", "ini_get('mysqli.default_socket')");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['user'];
     $password = $_POST['pass'];
@@ -12,13 +12,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //$username = stripslashes($username);
 //$password = stripslashes($password);
-//$username = mysql_real_escape_string($username);
-//$password = mysql_real_escape_string($password);
+//$username = mysqli_real_escape_string($conn,$username);
+//$password = mysqli_real_escape_string($conn,$password);
+
     $encpass = md5($password);
     // TO server side check wheter the the login inputs are empty or not
 
     //If empty .....
-    if (empty($username) || empty($password)) {
+    if (empty($username) || empty($encpass)) {
         echo "<font color='red'>Username and Password  have to be filled</font>";
     } else { // This code will be excuted
 
