@@ -105,8 +105,8 @@ $_SESSION['last_action'] = time();
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="http://localhost/authentification/inc/addCar.html">Add Car</a></li>
-                <li><a href="http://localhost/authentification/inc/deleteCar.html">Remove Car</a></li>
+                <li><a href="http://localhost/authentification/inc/addCarWebPage.php">Add Car</a></li>
+                <li><a href="http://localhost/authentification/inc/deleteCarWebPage.php">Remove Car</a></li>
                 <li><a href="http://localhost/authentification/Rest/RestfulClient/1RestClient.html">Restful Testing</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

@@ -1,3 +1,30 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_session'])) {
+
+echo "You didn`t authorized or session expired
+				<a href=\"../index.php\" >Login</a>";
+
+exit();
+}
+$oturumOmru = 1*20; // Oturum süresi 20 sn.
+
+if (isset($_SESSION['baslangicZamani']))
+{
+    $oturumSuresi = time() - $_SESSION['baslangicZamani'];
+    if ($oturumSuresi > $oturumOmru)
+    {
+        header("Location: http://localhost/authentification/index.php");
+        echo "The session expired";
+    }
+}
+$_SESSION['baslangicZamani'] = time();
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

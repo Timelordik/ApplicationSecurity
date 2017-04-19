@@ -12,6 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //$username = stripslashes($username);
 //$password = stripslashes($password);
+
+
 //$username = mysqli_real_escape_string($conn,$username);
 //$password = mysqli_real_escape_string($conn,$password);
 
@@ -22,11 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($username) || empty($encpass)) {
         echo "<font color='red'>Username and Password  have to be filled</font>";
     } else { // This code will be excuted
-
-
-        //   $conn = mysqli_connect('localhost', 'root', '', 'database') or die('Could not connect to mysql server.');
-        //      $request = "SELECT * FROM tbl_users WHERE user_name = '$username' AND user_password='$password' AND user_id = '$typeofuser'";
-        //      $query = mysqli_query($conn, $request);
 
 
         $stmt = $db_con->prepare("SELECT * FROM tbl_users WHERE user_name = '$username' AND user_password='$encpass' AND user_id = '$typeofuser'");

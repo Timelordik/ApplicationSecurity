@@ -25,3 +25,5 @@ if ($car_id == '' || $model == '' || $mileage == '' || $engine_number == '' || $
     } else echo "Insertion failed. This id is already exist";
 }
 ?>
+
+

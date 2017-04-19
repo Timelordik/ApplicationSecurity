@@ -53,11 +53,6 @@ if(isset($_SESSION['user_session'])!="")
         </div>
        
      	<hr />
-           <td>
-               <input type="radio" name="usertype" value="teacher"> User
-               <input type="radio" name="usertype" value="admin"> Admin <br><br>
-           </td>
-
            <div class="form-group">
             <button type="submit" class="btn btn-default" name="btn-login" id="btn-login">
     		<span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In
